@@ -8,6 +8,7 @@
 
 .list-container h1 {
 	font-size: 35px;
+	margin-bottom: 20px;
 }
 
 .form-container input, .form-container button {
@@ -27,7 +28,10 @@
 	display: grid;
 	grid-template-columns: 3fr 1fr;
 	column-gap: 5px;
-	margin: 20px 0;
+}
+
+.gift-list {
+	margin-top: 20px;
 }
 
 .gift-list li {
@@ -41,4 +45,21 @@
 .btn-gift {
 	height: 30px;
 	line-height: 0.7;
+}
+
+.btn-delete-all {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.no-gifts-text {
+	text-align: center;
+}
+
+.gift-form-error {
+	color: #db2a2d;
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+	margin-top: 5px;
 }
