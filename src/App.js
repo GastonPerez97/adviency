@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 
 import './App.css';
@@ -9,13 +9,18 @@ const App = () => {
 	const newGift = () => {
 		return {
 			id: nanoid(),
-			title: ""
+			title: "",
+			qty: ""
 		}
 	}
 
-	const [gifts, setGifts] = useState([]);
+	const [gifts, setGifts] = useState(JSON.parse(localStorage.getItem("gifts")) || []);
 	const [giftFormData, setGiftFormData] = useState(newGift());
 	const [giftFormError, setGiftFormError] = useState("");
+
+	useEffect(() => {
+		localStorage.setItem("gifts", JSON.stringify(gifts));
+	}, [gifts]);
 
 	const handleFormChange = event => {
 		const {name, value} = event.target;
@@ -24,12 +29,8 @@ const App = () => {
 	}
 
 	const handleSubmit = () => {
-		const isGiftRepeated = gifts.filter(gift => gift.title === giftFormData.title).length > 0;
-
-		if (!giftFormData.title) {
-			setGiftFormError("Escribe algo para agregarlo a la lista.");
-		} else if (isGiftRepeated) {
-			setGiftFormError("El regalo ya se encuentra en la lista.");
+		if (!giftFormData.title || giftFormData.qty <= 0) {
+			setGiftFormError("Completa los campos para agregar el regalo a la lista.");
 		} else {
 			setGifts(prevGifts => [...prevGifts, giftFormData]);
 			setGiftFormData(newGift());
@@ -37,18 +38,14 @@ const App = () => {
 		}
 	} 
 
-	const deleteGift = giftId => {
-		setGifts(prevGifts => prevGifts.filter(gift => gift.id !== giftId));
-	}
+	const deleteGift = giftId => setGifts(prevGifts => prevGifts.filter(gift => gift.id !== giftId));
 
-	const deleteAllGifts = () => {
-		setGifts([]);
-	}
+	const deleteAllGifts = () => setGifts([]);
 
 	const giftElements = gifts.map(gift => {
 		return (
 			<li key={ gift.id }>
-				{ gift.title }
+				{ gift.title } x{ gift.qty }
 				<button
 					className="btn-red btn-gift"
 					onClick={ () => deleteGift(gift.id) }
@@ -70,6 +67,15 @@ const App = () => {
 							name="title"
 							placeholder="&iquest;Qu&eacute; vas a regalar?"
 							value={ giftFormData.title }
+							onChange={ handleFormChange }
+						/>
+
+						<input
+							type="number"
+							min={0}
+							name="qty"
+							placeholder="Cant."
+							value={ giftFormData.qty }
 							onChange={ handleFormChange }
 						/>
 
