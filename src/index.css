@@ -1,6 +1,34 @@
-body {
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* font-family: */
+	font-family: 'Rubik', sans-serif;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+footer {
+	margin-top: auto;
+
+	color: #bb2528;
+	text-align: center;
+	padding: 2em 0 2em 0;
+}
+
+.btn-red {
+	background-color: #db2a2d;
+	color: #FFF;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 1px solid #db2a2d;
+	transition: 0.2s;
+}
+
+.btn-red:hover {
+	background-color: #bb2528;
 }
