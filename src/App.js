@@ -1,42 +1,23 @@
 import { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
+
+import GiftForm from "./components/GiftForm/GiftForm";
 
 import './App.css';
 
-import { BiErrorCircle } from "react-icons/bi";
-
 const App = () => {
-	const newGift = () => {
-		return {
-			id: nanoid(),
-			title: "",
-			qty: ""
-		}
-	}
-
 	const [gifts, setGifts] = useState(JSON.parse(localStorage.getItem("gifts")) || []);
-	const [giftFormData, setGiftFormData] = useState(newGift());
-	const [giftFormError, setGiftFormError] = useState("");
+	const [showGiftForm, setShowGiftForm] = useState(false);
 
 	useEffect(() => {
 		localStorage.setItem("gifts", JSON.stringify(gifts));
 	}, [gifts]);
 
-	const handleFormChange = event => {
-		const {name, value} = event.target;
+	const closeGiftForm = () => setShowGiftForm(false);
 
-		setGiftFormData(prevFormData => ({...prevFormData, [name]: value}));
+	const addGift = gift => {
+		setGifts(prevGifts => [...prevGifts, gift]);
+		closeGiftForm();
 	}
-
-	const handleSubmit = () => {
-		if (!giftFormData.title || giftFormData.qty <= 0) {
-			setGiftFormError("Completa los campos para agregar el regalo a la lista.");
-		} else {
-			setGifts(prevGifts => [...prevGifts, giftFormData]);
-			setGiftFormData(newGift());
-			setGiftFormError("");
-		}
-	} 
 
 	const deleteGift = giftId => setGifts(prevGifts => prevGifts.filter(gift => gift.id !== giftId));
 
@@ -45,7 +26,11 @@ const App = () => {
 	const giftElements = gifts.map(gift => {
 		return (
 			<li key={ gift.id }>
-				{ gift.title } x{ gift.qty }
+				<div>
+					<img src={ gift.imageUrl } alt="Imagen del regalo" />
+					<p>{ gift.title } x{ gift.qty }</p>
+				</div>
+				
 				<button
 					className="btn-red btn-gift"
 					onClick={ () => deleteGift(gift.id) }
@@ -61,36 +46,17 @@ const App = () => {
 				<section className="list-container">
 					<h1>Regalos:</h1>
 
-					<div className="form-container">
-						<input
-							type="text"
-							name="title"
-							placeholder="&iquest;Qu&eacute; vas a regalar?"
-							value={ giftFormData.title }
-							onChange={ handleFormChange }
+					<button
+						className="btn-red btn-add-gift"
+						onClick={ () => setShowGiftForm(true) }
+					>Agregar regalo
+					</button>
+
+					{ showGiftForm &&
+						<GiftForm
+							addGift={ addGift }
+							closeGiftForm={ closeGiftForm }	
 						/>
-
-						<input
-							type="number"
-							min={0}
-							name="qty"
-							placeholder="Cant."
-							value={ giftFormData.qty }
-							onChange={ handleFormChange }
-						/>
-
-						<button
-							onClick={ handleSubmit }
-							className="btn-red"
-						>Agregar
-						</button>
-					</div>
-
-					{ giftFormError &&
-						<div className="gift-form-error">
-							<BiErrorCircle />
-							<small>{ giftFormError }</small>
-						</div>
 					}
 
 					<ul className="gift-list">

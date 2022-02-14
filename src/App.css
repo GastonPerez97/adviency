@@ -11,24 +11,6 @@
 	margin-bottom: 20px;
 }
 
-.form-container {
-	display: flex;
-	column-gap: 5px;
-}
-
-.form-container input, .form-container button {
-	height: 35px;
-}
-
-.form-container input {
-	width: 100%;
-	padding-left: 10px;
-}
-
-.form-container input:nth-of-type(2) {
-	width: 65px;
-}
-
 .gift-list {
 	margin-top: 20px;
 }
@@ -41,6 +23,16 @@
 	align-items: center;
 }
 
+.gift-list li div {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.gift-list li div img {
+	width: 45px;
+}
+
 .btn-gift {
 	height: 30px;
 	line-height: 0.7;
@@ -51,14 +43,10 @@
 	margin-top: 20px;
 }
 
-.no-gifts-text {
-	text-align: center;
+.btn-add-gift {
+	width: 100%;
 }
 
-.gift-form-error {
-	color: #db2a2d;
-	display: flex;
-	align-items: center;
-	column-gap: 5px;
-	margin-top: 7px;
+.no-gifts-text {
+	text-align: center;
 }

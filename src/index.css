@@ -32,3 +32,16 @@ footer {
 .btn-red:hover {
 	background-color: #bb2528;
 }
+
+.btn-outline-red {
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 1px solid #db2a2d;
+	transition: 0.2s;
+}
+
+.btn-outline-red:hover {
+	background-color: #bb2528;
+	color: #FFF;
+}
