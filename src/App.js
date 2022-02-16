@@ -67,6 +67,21 @@ const App = () => {
 		setSelectedGiftData(getGift(giftId));
 	}
 
+	const formatPrice = price => {
+		const options = { style: 'currency', currency: 'ARS' };
+		return new Intl.NumberFormat('es-AR', options).format(price);
+	}
+
+	const getTotalPrice = () => {
+		let total = 0;
+
+		gifts.forEach(gift => {
+			total += (gift.unitPrice * gift.qty);
+		});
+
+		return formatPrice(total);
+	}
+
 	const giftElements = gifts.map(gift => {
 		return (
 			<li key={ gift.id }>
@@ -80,7 +95,7 @@ const App = () => {
 					/>
 					
 					<div className="gift-text">
-						<p>{ gift.title } ({ gift.qty }) - $ { gift.unitPrice * gift.qty }</p>
+						<p>{ gift.title } ({ gift.qty }) - { formatPrice(gift.unitPrice * gift.qty) }</p>
 						<small>{ gift.receiver }</small>
 					</div>
 				</div>
@@ -134,6 +149,8 @@ const App = () => {
 
 						{ giftElements }
 					</ul>
+
+					<b className="total-price">Total: { getTotalPrice() }</b>
 
 					<button className="btn-red btn-delete-all" onClick={ deleteAllGifts }>Borrar todo</button>
 				</section>
