@@ -17,25 +17,37 @@
 
 .gift-list li {
 	list-style: none;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.gift-list li div {
+.gift-info-container {
 	display: flex;
-	align-items: center;
 	column-gap: 10px;
 }
 
-.gift-list li div img {
+.gift-info-container img {
 	width: 45px;
 }
 
 .btn-gift {
-	height: 30px;
-	line-height: 0.7;
+	width: 35px;
+	height: 35px;
+	position: relative;
+}
+
+.btn-gift svg {
+	font-size: 20px;
+	position: absolute;
+	top: 7px;
+	right: 6px;
+}
+
+.gift-btn-container {
+	display: flex;
+	column-gap: 5px;
 }
 
 .btn-delete-all {
@@ -49,4 +61,10 @@
 
 .no-gifts-text {
 	text-align: center;
+}
+
+.gift-text {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
 }
