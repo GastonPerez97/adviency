@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+
 import defaultGiftImg from "./assets/img/gift-default.png";
 import GiftForm, { GIFT_FORM_ACTIONS } from "./components/GiftForm/GiftForm";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+
+import getGifts from "./services/getGifts";
 
 import { IoIosTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
@@ -9,10 +13,18 @@ import { BiDuplicate } from "react-icons/bi";
 import './App.css';
 
 const App = () => {
-	const [gifts, setGifts] = useState(JSON.parse(localStorage.getItem("gifts")) || []);
+	const [gifts, setGifts] = useState([]);
+	const [loadingScreen, setLoadingScreen] = useState(true);
 	const [selectedGiftData, setSelectedGiftData] = useState(null);
 	const [showGiftForm, setShowGiftForm] = useState(false);
 	const [giftFormAction, setGiftFormAction] = useState("");
+
+	useEffect(() => {
+		getGifts().then(gifts => {
+			setGifts(gifts);
+			setLoadingScreen(false);		
+		});
+	}, []);
 
 	useEffect(() => {
 		localStorage.setItem("gifts", JSON.stringify(gifts));
@@ -95,6 +107,8 @@ const App = () => {
 	return (
 		<>
 			<main>
+				{ loadingScreen && <LoadingScreen /> }
+
 				<section className="list-container">
 					<h1>Regalos:</h1>
 

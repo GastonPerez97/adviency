@@ -68,6 +68,7 @@ const GiftForm = props => {
 						placeholder="&iquest;Qu&eacute; vas a regalar?"
 						value={ giftFormData.title }
 						onChange={ handleFormChange }
+						autoFocus
 					/>
 
 					{ (showGiftFormErrors && !giftFormData.title) &&  
