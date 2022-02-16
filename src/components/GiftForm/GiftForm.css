@@ -38,12 +38,16 @@
 	column-gap: 10px;
 }
 
-.form-input-qty {
-	width: 205px;
+.form-input-row div:first-child {
+	flex-grow: 1;
 }
 
-.form-input-img {
-	width: 100%;
+.form-input-row div:first-child .gift-form-error  {
+	width: auto;
+}
+
+.form-input-row div:nth-child(2) {
+	width: 150px;
 }
 
 .gift-form-error {
@@ -60,4 +64,22 @@
 	flex-direction: row-reverse;
 	justify-content: space-around;
 	margin-top: 20px;
+}
+
+.add-gift-input {
+	position: relative;
+	display: flex;
+}
+
+.add-gift-input button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 5px;
+	position: absolute;
+	right: 0;
+	border: 1px solid rgb(118, 118, 118);
+	border-left: none;
+	border-radius: 0 3px 3px 0;
+	width: 150px;
 }

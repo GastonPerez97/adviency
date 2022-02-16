@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
+import getRandomGiftTitle from "../../services/getRandomGiftTitle";
+
 import "./GiftForm.css";
 
-import { BiErrorCircle } from "react-icons/bi";
+import { BiErrorCircle, BiGift } from "react-icons/bi";
 
 const GIFT_FORM_ACTIONS = {
 	ADD: "Agregar",
@@ -17,6 +19,7 @@ const GiftForm = props => {
 			id: nanoid(),
 			title: "",
 			qty: "",
+			unitPrice: "",
 			imageUrl: "",
 			receiver: ""
 		}
@@ -34,7 +37,8 @@ const GiftForm = props => {
 		if (!giftFormData.title
 			|| giftFormData.qty <= 0
 			|| !giftFormData.imageUrl
-			|| !giftFormData.receiver) {
+			|| !giftFormData.receiver
+			|| giftFormData.unitPrice <= 0) {
 				
 			setShowGiftFormErrors(true);
 		} else {
@@ -56,20 +60,36 @@ const GiftForm = props => {
 		}
 	}
 
+	const getRandomGift = () => {
+		const giftTitle = getRandomGiftTitle();
+		setGiftFormData(prevFormData => ({...prevFormData, title: giftTitle}));
+	}
+
 	return (
 		<section className="form-main-container">
 			<div className="form-container">
 				<h2>{ props.giftFormAction } regalo:</h2>
 
 				<div>
-					<input
-						type="text"
-						name="title"
-						placeholder="&iquest;Qu&eacute; vas a regalar?"
-						value={ giftFormData.title }
-						onChange={ handleFormChange }
-						autoFocus
-					/>
+					<div className="add-gift-input">
+						<input
+							type="text"
+							name="title"
+							placeholder="&iquest;Qu&eacute; vas a regalar?"
+							value={ giftFormData.title }
+							onChange={ handleFormChange }
+							autoFocus
+						/>
+
+						{ props.giftFormAction === GIFT_FORM_ACTIONS.ADD &&
+							<button
+								className="btn-red"
+								onClick={ getRandomGift }
+							>
+								<BiGift /> &iexcl;Sorpr&eacute;ndeme!
+							</button>
+						}
+					</div>
 
 					{ (showGiftFormErrors && !giftFormData.title) &&  
 						<div className="gift-form-error">
@@ -79,26 +99,46 @@ const GiftForm = props => {
 					}
 				</div>
 
-				<div>
-					<input
-						type="text"
-						name="receiver"
-						placeholder="&iquest;A qui&eacute;n se lo vas a regalar?"
-						value={ giftFormData.receiver }
-						onChange={ handleFormChange }
-					/>
+				<div className="form-input-row">
+					<div>
+						<input
+							type="text"
+							name="receiver"
+							placeholder="&iquest;A qui&eacute;n se lo vas a regalar?"
+							value={ giftFormData.receiver }
+							onChange={ handleFormChange }
+						/>
 
-					{ (showGiftFormErrors && !giftFormData.receiver) &&  
-						<div className="gift-form-error">
-							<BiErrorCircle />
-							<small>Completa este campo</small>
-						</div>
-					}
+						{ (showGiftFormErrors && !giftFormData.receiver) &&  
+							<div className="gift-form-error">
+								<BiErrorCircle />
+								<small>Completa este campo</small>
+							</div>
+						}
+					</div>
+
+					<div>
+						<input
+							type="number"
+							min={0}
+							name="qty"
+							placeholder="Cantidad"
+							value={ giftFormData.qty }
+							onChange={ handleFormChange }
+						/>
+
+						{ (showGiftFormErrors && giftFormData.qty <= 0) &&  
+							<div className="gift-form-error">
+								<BiErrorCircle />
+								<small>Agrega la cantidad</small>
+							</div>
+						}
+					</div>
 				</div>
 
 
 				<div className="form-input-row">
-					<div className="form-input-img">
+					<div>
 						<input
 							type="text"
 							name="imageUrl"
@@ -115,20 +155,20 @@ const GiftForm = props => {
 						}
 					</div>
 
-					<div className="form-input-qty">
+					<div>
 						<input
 							type="number"
 							min={0}
-							name="qty"
-							placeholder="Cantidad"
-							value={ giftFormData.qty }
+							name="unitPrice"
+							placeholder="Precio"
+							value={ giftFormData.unitPrice }
 							onChange={ handleFormChange }
 						/>
 
-						{ (showGiftFormErrors && !giftFormData.qty) &&  
+						{ (showGiftFormErrors && giftFormData.unitPrice <= 0) &&  
 							<div className="gift-form-error">
 								<BiErrorCircle />
-								<small>Agrega la cantidad</small>
+								<small>Agrega el precio</small>
 							</div>
 						}
 					</div>

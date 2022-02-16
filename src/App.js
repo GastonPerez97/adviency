@@ -80,7 +80,7 @@ const App = () => {
 					/>
 					
 					<div className="gift-text">
-						<p>{ gift.title } x{ gift.qty }</p>
+						<p>{ gift.title } ({ gift.qty }) - $ { gift.unitPrice * gift.qty }</p>
 						<small>{ gift.receiver }</small>
 					</div>
 				</div>
