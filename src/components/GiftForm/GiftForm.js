@@ -44,13 +44,14 @@ const GiftForm = props => {
 		} else {
 			switch (props.giftFormAction) {
 				case GIFT_FORM_ACTIONS.ADD:
+				case GIFT_FORM_ACTIONS.DUPLICATE:
 					props.addGift(giftFormData);
 					break;
 
 				case GIFT_FORM_ACTIONS.EDIT:
 					props.editGift(giftFormData);
 					break;
-			
+
 				default:
 					break;
 			}

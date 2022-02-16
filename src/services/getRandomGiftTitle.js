@@ -1,5 +1,5 @@
 const randomGiftTitles = [
-	"Taza de cafe; personalizada", "Medias", "Zapatillas",
+	"Taza de cafe personalizada", "Medias", "Zapatillas",
 	"Mochila", "Perfume", "Smart Watch", "Campera", "Termo para mate",
 	"Jeans", "Guantes termicos", "Jersey de lana", "Plancha de pelo",
 	"Auriculares inalambricos", "Estuche de maquillaje", "Juego de mesa",

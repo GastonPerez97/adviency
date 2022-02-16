@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 
 import defaultGiftImg from "./assets/img/gift-default.png";
 import GiftForm, { GIFT_FORM_ACTIONS } from "./components/GiftForm/GiftForm";
@@ -51,6 +52,12 @@ const App = () => {
 
 	const deleteAllGifts = () => setGifts([]);
 
+	const handleEditGift = giftId => {
+		setShowGiftForm(true);
+		setGiftFormAction(GIFT_FORM_ACTIONS.EDIT);
+		setSelectedGiftData(getGift(giftId));
+	}
+
 	const editGift = gift => {
 		setGifts(prevGifts => {
 			return prevGifts.map(prevGift => {
@@ -61,10 +68,13 @@ const App = () => {
 		closeGiftForm();
 	}
 
-	const handleEditGift = giftId => {
+	const handleDuplicateGift = giftId => {
+		const gift = getGift(giftId);
+		const duplicatedGift = { ...gift, id: nanoid() }
+
 		setShowGiftForm(true);
-		setGiftFormAction(GIFT_FORM_ACTIONS.EDIT);
-		setSelectedGiftData(getGift(giftId));
+		setGiftFormAction(GIFT_FORM_ACTIONS.DUPLICATE);
+		setSelectedGiftData(duplicatedGift);
 	}
 
 	const formatPrice = price => {
@@ -101,6 +111,13 @@ const App = () => {
 				</div>
 
 				<div className="gift-btn-container">
+					<button
+						className="btn-red btn-gift"
+						onClick={ () => handleDuplicateGift(gift.id) }
+					>
+						<BiDuplicate />
+					</button>
+
 					<button
 						className="btn-red btn-gift"
 						onClick={ () => handleEditGift(gift.id) }
