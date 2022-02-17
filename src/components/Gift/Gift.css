@@ -1,0 +1,32 @@
+.gift-info-container {
+	display: flex;
+	column-gap: 10px;
+}
+
+.gift-info-container img {
+	width: 45px;
+}
+
+.btn-gift {
+	width: 35px;
+	height: 35px;
+	position: relative;
+}
+
+.btn-gift svg {
+	font-size: 20px;
+	position: absolute;
+	top: 7px;
+	right: 6px;
+}
+
+.gift-btn-container {
+	display: flex;
+	column-gap: 5px;
+}
+
+.gift-text {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
