@@ -26,28 +26,30 @@ const Gift = props => {
 				</div>
 			</div>
 
-			<div className="gift-btn-container">
-				<button
-					className="btn-red btn-gift"
-					onClick={ () => props.handleDuplicateGift(props.gift.id) }
-				>
-					<BiDuplicate />
-				</button>
+			{ !props.hideButtons &&
+				<div className="gift-btn-container">
+					<button
+						className="btn-red btn-gift"
+						onClick={ () => props.handleDuplicateGift(props.gift.id) }
+					>
+						<BiDuplicate />
+					</button>
 
-				<button
-					className="btn-red btn-gift"
-					onClick={ () => props.handleEditGift(props.gift.id) }
-				>
-					<FiEdit />
-				</button>
+					<button
+						className="btn-red btn-gift"
+						onClick={ () => props.handleEditGift(props.gift.id) }
+					>
+						<FiEdit />
+					</button>
 
-				<button
-					className="btn-red btn-gift"
-					onClick={ () => props.deleteGift(props.gift.id) }
-				>
-					<IoIosTrash />
-				</button>
-			</div>
+					<button
+						className="btn-red btn-gift"
+						onClick={ () => props.deleteGift(props.gift.id) }
+					>
+						<IoIosTrash />
+					</button>
+				</div>
+			}
 		</li>
 	);
 }

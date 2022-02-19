@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import GiftForm, { GIFT_FORM_ACTIONS } from "../../components/GiftForm/GiftForm";
 import Gift from "../../components/Gift/Gift";
+import Preview from "../Preview/Preview";
 
 import getGifts from "../../services/getGifts";
 import formatPrice from "../../services/formatPrice";
@@ -16,6 +17,7 @@ const Gifts = props => {
 	const [selectedGiftData, setSelectedGiftData] = useState(null);
 	const [showGiftForm, setShowGiftForm] = useState(false);
 	const [giftFormAction, setGiftFormAction] = useState("");
+	const [showPreview, setShowPreview] = useState(false);
 
 	useEffect(() => {
 		getGifts().then(gifts => {
@@ -84,6 +86,8 @@ const Gifts = props => {
 		return formatPrice(total);
 	}
 
+	const handlePreview = () => setShowPreview(prevState => !prevState);
+
 	const giftElements = gifts.map(gift => {
 		return (
 			<Gift
@@ -99,6 +103,8 @@ const Gifts = props => {
 	return (
 		<section className="list-container">
 			{ loadingScreen && <LoadingScreen /> }
+			{ showPreview &&
+				<Preview gifts={ gifts } handlePreview={ handlePreview } /> }
 
 			<h1>Regalos:</h1>
 
@@ -127,6 +133,7 @@ const Gifts = props => {
 
 			<b className="total-price">Total: { getTotalPrice() }</b>
 
+			<button className="btn-red btn-delete-all" onClick={ handlePreview }>Previsualizar</button>
 			<button className="btn-red btn-delete-all" onClick={ deleteAllGifts }>Borrar todo</button>
 		</section>
 	);
