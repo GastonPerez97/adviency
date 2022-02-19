@@ -1,11 +1,20 @@
 import Gifts from "./components/Gifts/Gifts";
+import Snowfall from "react-snowfall";
 
 import './App.css';
 
 const App = () => {
+	const snowfallStyles = {
+		position: 'fixed',
+		width: '100vw',
+		height: '100vh',
+		zIndex: "-1"		
+	};
+
 	return (
 		<>
 			<main>
+				<Snowfall color="#FFF" style={ snowfallStyles } />
 				<Gifts />
 			</main>
 
