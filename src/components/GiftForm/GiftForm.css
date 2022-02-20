@@ -83,3 +83,32 @@
 	border-radius: 0 3px 3px 0;
 	width: 150px;
 }
+
+@media screen and (max-width: 530px) {
+	.form-container {
+		margin: 100px 15px;
+		width: auto;
+	}
+
+	.form-input-row {
+		flex-direction: column;
+		column-gap: 0;
+		row-gap: 10px;
+	}
+	
+	.form-input-row div:first-child {
+		flex-grow: 0;
+	}
+	
+	.form-input-row div:first-child .gift-form-error  {
+		width: auto;
+	}
+	
+	.form-input-row div:nth-child(2) {
+		width: auto;
+	}
+
+	.add-gift-input button {
+		width: 130px;
+	}
+}

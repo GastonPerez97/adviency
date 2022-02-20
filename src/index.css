@@ -38,6 +38,7 @@ footer {
 	border-radius: 5px;
 	border: 1px solid #db2a2d;
 	transition: 0.2s;
+	background-color: #FFF;
 }
 
 .btn-outline-red:hover {

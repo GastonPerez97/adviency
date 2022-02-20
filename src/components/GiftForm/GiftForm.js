@@ -43,6 +43,7 @@ const GiftForm = props => {
 			setShowGiftFormErrors(true);
 		} else {
 			switch (props.giftFormAction) {
+				
 				case GIFT_FORM_ACTIONS.ADD:
 				case GIFT_FORM_ACTIONS.DUPLICATE:
 					props.addGift(giftFormData);

@@ -38,9 +38,6 @@ const Gifts = props => {
 		localStorage.setItem("gifts", JSON.stringify(gifts));
 	}, [gifts]);
 
-	// const song = new Audio(christmasSong);
-	// song.volume = 0.5;
-
 	const getGift = giftId => gifts.find(gift => gift.id === giftId);
 
 	const closeGiftForm = () => {
@@ -101,7 +98,7 @@ const Gifts = props => {
 
 	const handleAudio = () => {
 		audio.isPlaying ? audio.song.pause() : audio.song.play();
-		
+
 		setAudio(prevAudio => ({...prevAudio, isPlaying: !prevAudio.isPlaying }));
 	}
 
