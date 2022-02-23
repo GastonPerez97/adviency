@@ -15,7 +15,7 @@
 	background-color: #FFF;
 	width: 500px;
 	height: auto;
-	border: 1px solid #bb2528;
+	box-shadow: var(--3d-box-shadow);
 	border-radius: 10px;
 	padding: 20px;
 	margin: 5% auto;

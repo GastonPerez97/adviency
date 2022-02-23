@@ -1,8 +1,6 @@
 import Gifts from "./components/Gifts/Gifts";
 import Snowfall from "react-snowfall";
 
-import './App.css';
-
 const App = () => {
 	const snowfallStyles = {
 		position: 'fixed',
@@ -19,10 +17,12 @@ const App = () => {
 			</main>
 
 			<footer>
-				Desarrollado por&nbsp;
-				<a href="https://gastonperez.ar/" target="_blank" rel="noreferrer">
-					Gast&oacute;n P&eacute;rez
-				</a>
+				<p>
+					Desarrollado por&nbsp;
+					<a href="https://gastonperez.ar/" target="_blank" rel="noreferrer">
+						Gast&oacute;n P&eacute;rez
+					</a>
+				</p>
 			</footer>
 		</>
 	);

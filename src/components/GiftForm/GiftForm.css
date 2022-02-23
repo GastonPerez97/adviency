@@ -14,7 +14,7 @@
 	row-gap: 10px;
 	background-color: #FFF;
 	width: 500px;
-	border: 1px solid #bb2528;
+	box-shadow: var(--3d-box-shadow);
 	border-radius: 10px;
 	padding: 20px;
 	margin: 200px auto;
@@ -31,6 +31,8 @@
 .form-container input {
 	width: 100%;
 	padding-left: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 3px;
 }
 
 .form-input-row {
@@ -71,6 +73,10 @@
 	display: flex;
 }
 
+.add-gift-input input {
+	border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
 .add-gift-input button {
 	display: flex;
 	justify-content: center;
@@ -78,7 +84,7 @@
 	column-gap: 5px;
 	position: absolute;
 	right: 0;
-	border: 1px solid rgb(118, 118, 118);
+	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-left: none;
 	border-radius: 0 3px 3px 0;
 	width: 150px;
