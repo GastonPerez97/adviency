@@ -4,7 +4,7 @@ const getGifts = () => {
 
 		setTimeout(() => {
 			res(data);
-		}, 1000);
+		}, 1700);
 	});
 }
 

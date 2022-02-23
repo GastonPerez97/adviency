@@ -1,5 +1,5 @@
 .loading-container {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -10,15 +10,25 @@
 
 .loading-box {
 	display: flex;
+	flex-direction: column;
+	row-gap: 40px;
 	justify-content: center;
 	align-items: center;
 	background-color: #FFF;
 	width: 500px;
-	height: 300px;
+	height: 250px;
 	box-shadow: var(--3d-box-shadow);
 	border-radius: 10px;
 	padding: 20px;
 	margin: 200px auto;
 	font-size: 22px;
 	font-weight: 600;
+}
+
+@media screen and (max-width: 530px) {
+	.loading-box {
+		width: auto;
+		margin: 150px 15px;
+		font-size: 18px;
+	}
 }
