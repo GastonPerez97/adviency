@@ -3,7 +3,10 @@
 	box-shadow: var(--3d-box-shadow);
 	border-radius: 10px;
 	padding: 20px;
-	margin: 12% auto 5% auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -56%);
 	background-color: #FFF;
 }
 
@@ -19,7 +22,10 @@
 }
 
 .gift-list {
-	margin-top: 20px;
+	margin: 20px 0;
+	padding-right: 10px;
+	max-height: 47vh;
+	overflow-y: auto;
 }
 
 .gift-list li {
@@ -28,6 +34,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.gift-list li:last-child {
+	margin-bottom: 0;
 }
 
 .btn-delete-all {
@@ -41,7 +51,7 @@
 
 .no-gifts-text {
 	text-align: center;
-	margin: 40px 0;
+	margin: 25px 0;
 }
 
 .total-price {
@@ -59,7 +69,11 @@
 
 @media screen and (max-width: 530px) {
 	.list-container {
-		margin: 120px 15px 50px 15px;
-		width: auto;
+		width: 95%;
+		transform: translate(-50%, -50%);
+	}
+
+	.gift-list {
+		max-height: 40vh;
 	}
 }
