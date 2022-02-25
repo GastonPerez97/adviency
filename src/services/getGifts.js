@@ -1,6 +1,6 @@
 const getGifts = () => {
 	return new Promise((res, rej) => {
-		const data = JSON.parse(window.localStorage.getItem("gifts"));
+		const data = JSON.parse(window.localStorage.getItem("gifts")) || [];
 
 		setTimeout(() => {
 			res(data);
