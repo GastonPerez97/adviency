@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { nanoid } from "nanoid";
 
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
@@ -84,15 +84,11 @@ const Gifts = props => {
 		setSelectedGiftData(duplicatedGift);
 	}
 
-	const getTotalPrice = () => {
-		let total = 0;
-
-		gifts.forEach(gift => {
-			total += (gift.unitPrice * gift.qty);
-		});
-
-		return formatPrice(total);
-	}
+	const totalPrice = useMemo(() => {
+		return gifts.reduce((total, gift) => {
+			return total + (gift.unitPrice * gift.qty);
+		}, 0);
+	}, [gifts]);
 
 	const handlePreview = () => setShowPreview(prevState => !prevState);
 
@@ -150,12 +146,25 @@ const Gifts = props => {
 				{ giftElements }
 			</ul>
 
-			<b className="total-price">Total: { getTotalPrice() }</b>
+			<b className="total-price">Total: { formatPrice(totalPrice) }</b>
 
 			{ gifts.length > 0 &&
-				<button className="btn-red btn-delete-all" onClick={ handlePreview }>Previsualizar</button>
+				<div className="bottom-btn-container">
+					<button
+						className="btn-outline-red"
+						onClick={ deleteAllGifts }
+					>
+						Borrar todo
+					</button>
+
+					<button
+						className="btn-red"
+						onClick={ handlePreview }
+					>
+						Previsualizar
+					</button>
+				</div>
 			}
-			<button className="btn-red btn-delete-all" onClick={ deleteAllGifts }>Borrar todo</button>
 		</section>
 	);
 }

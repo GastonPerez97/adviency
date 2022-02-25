@@ -25,7 +25,9 @@ const GiftForm = props => {
 		}
 	}
 
-	const [giftFormData, setGiftFormData] = useState(props.selectedGiftData !== null ? props.selectedGiftData : newGift());
+	const [giftFormData, setGiftFormData] = useState(
+		props.selectedGiftData !== null ? props.selectedGiftData : newGift()
+	);
 	const [showGiftFormErrors, setShowGiftFormErrors] = useState(false);
 
 	const handleFormChange = event => {
@@ -144,7 +146,7 @@ const GiftForm = props => {
 						<input
 							type="text"
 							name="imageUrl"
-							placeholder="https://imagen..."
+							placeholder="https://imagen.jpg"
 							value={ giftFormData.imageUrl }
 							onChange={ handleFormChange }
 						/>

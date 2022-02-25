@@ -64,8 +64,15 @@
 }
 
 @media print {
+	@page {
+		margin-top: 1.5cm;
+		margin-bottom: 2cm;
+	}
+
 	.preview-box {
-		margin-top: 20px;
+		position: static;
+		transform: none;
+		margin: 0 auto;
 	}
 
 	.preview-btn-container {
