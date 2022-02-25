@@ -29,8 +29,8 @@ const Gifts = props => {
 
 	useEffect(() => {
 		getGifts().then(gifts => {
-			setGifts(gifts);
-			setLoadingScreen(false);		
+			gifts ? setGifts(gifts) : setGifts([]);
+			setLoadingScreen(false);
 		});
 	}, []);
 
