@@ -1,6 +1,6 @@
 # 🎁 Adviency
 
-![adviency-gifts vercel app_](https://user-images.githubusercontent.com/58083159/155803617-5d732a04-f4fd-4098-95c4-94c4bee5b346.jpg)
+![d67dcfc2fcf6051b82a4250d15ab0217](https://user-images.githubusercontent.com/58083159/155807995-ec0064e2-ac07-4a62-bbed-26cc5c1d6ba8.jpg)
 
 ***Este repositorio está basado en el challenge de [Goncy](https://gonzalopozzo.com/) ¡Muchas gracias por tomarte el tiempo en armar este desafío!***
 
@@ -8,7 +8,7 @@
 
 ## 🎯 Objetivo:
 
-Crear una aplicación web de una lista de regalos de navidad 🎄.
+Crear una aplicación web de una lista de regalos de navidad 🎄
 
 ## 🛠️ Tecnologías utilizadas:
 - HTML 5
