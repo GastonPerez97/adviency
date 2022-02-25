@@ -27,6 +27,20 @@ body {
 	background-size: cover;
 }
 
+::-webkit-scrollbar {
+	width: 13px;
+}
+  
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #db2a2d;
+	border-radius: 10px;
+}
+
 footer {
 	margin-top: auto;
 	text-align: center;
@@ -75,4 +89,10 @@ footer p {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+}
+
+@media screen and (max-width: 530px) {
+	::-webkit-scrollbar {
+		width: 5px;
+	}
 }
